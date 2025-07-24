@@ -12,4 +12,4 @@ const reviewSchmea=new Schema({
         default:Date.now(),
     },
 });
-module.exports=mongoose.model("Review",reviewSchmea);
+module.exports=mongoose.model("Review",reviewSchema);
