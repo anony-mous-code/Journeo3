@@ -117,10 +117,15 @@ app.all(/.*/, (req, res, next) => {
 //     res.status(statusCode).send(message);
 // //res.send("Something went wrong!");
 // });
+// app.use((err, req, res, next) => {
+//     const { statusCode = 500, message = "Something went wrong!" } = err;
+//     res.status(statusCode).render("error.ejs",{message});
+//     // res.status(statusCode).send(message);
+// });
 app.use((err, req, res, next) => {
     const { statusCode = 500, message = "Something went wrong!" } = err;
-    res.status(statusCode).render("error.ejs",{message});
-    // res.status(statusCode).send(message);
+    console.error("Error Stack Trace:", err.stack); // <-- This line logs to console
+    res.status(statusCode).render("error.ejs", { message });
 });
 
 app.listen(3000,()=>{
